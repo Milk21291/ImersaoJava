@@ -31,6 +31,19 @@ public class Main {
             System.out.print("\u001b[1mAvaliação: ");
             for (int n = 1; n <= starsNumbers; n++) {
                 System.out.print("⭐");
+
+            }
+            System.out.print("\n");
+            if(starsNumbers >= 8) {
+                System.out.print("\u001b[1mRecomendação:\u001b[m Muito bom");
+            }
+
+            if(starsNumbers >= 5 && starsNumbers <= 7) {
+                System.out.print("\u001b[1mRecomendação:\u001b[m Bom");
+            }
+
+            if(starsNumbers <= 4) {
+                System.out.print("\u001b[1mRecomendação:\u001b[m Ruim");
             }
             System.out.println("\n");
         }
