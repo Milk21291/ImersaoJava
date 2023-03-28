@@ -1,7 +1,10 @@
+import java.io.InputStream;
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.List;
 import java.util.Map;
 
@@ -20,11 +23,21 @@ public class Main {
         var parser = new JsonParser();
         List<Map<String, String>> listaDeFilmes = parser.parse(body);
 
+        // exibir e manipular os dados
         System.out.println("\u001b[1mTop 10 Filmes\n");
-        for (int  i = 0; i < 10; i++) {
-            Map<String,String> filme = listaDeFilmes.get(i) ;
-            System.out.println("\u001b[1mTítulo:\u001b[m " + filme.get("title"));
-            System.out.println("\u001b[1mUrl da imagem:\u001b[m " + filme.get("image"));
+        var generating = new StickerGenerator();
+        for (Map<String,String> filme : listaDeFilmes) {
+
+            String urlImage = filme.get("image");
+            String title = filme.get("title");
+
+            InputStream inputStream = new URL(urlImage).openStream();
+            String fileName = title + ".png";
+
+            generating.create(inputStream, fileName);
+
+            System.out.println("\u001b[1mTítulo:\u001b[m " + title);
+
             double classification = Double.parseDouble(filme.get("imDbRating"));
             int starsNumbers = (int) classification;
 
@@ -47,5 +60,5 @@ public class Main {
             }
             System.out.println("\n");
         }
-    }
-}
+     }
+  }
