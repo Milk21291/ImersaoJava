@@ -33,6 +33,6 @@ public class StickerGenerator {
 
 
         // escrever a nova imagem em um arquivo
-        ImageIO.write(novaImagem, "png", new File("saida", fileName));
+        ImageIO.write(novaImagem, "png", new File("figure", fileName));
     }
 }
