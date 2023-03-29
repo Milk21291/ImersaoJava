@@ -37,7 +37,7 @@ public class Main {
             String title = filme.get("title");
 
             InputStream inputStream = new URL(urlImage).openStream();
-            String fileName = directory + title + ".png";
+            String fileName = title.replace(":", "-") + directory + ".png";
 
             generating.create(inputStream, fileName);
 
