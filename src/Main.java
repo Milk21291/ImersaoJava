@@ -30,7 +30,8 @@ public class Main {
         // exibir e manipular os dados
         System.out.println("\u001b[1mTop 10 Filmes\n");
         var generating = new StickerGenerator();
-        for (Map<String,String> filme : listaDeFilmes) {
+        for (int i = 0; i < 10; i++) {
+            Map<String, String> filme = listaDeFilmes.get(i);
 
             String urlImage = filme.get("image");
             String title = filme.get("title");
@@ -51,18 +52,18 @@ public class Main {
 
             }
             System.out.print("\n");
-            if(starsNumbers >= 8) {
+            if (starsNumbers >= 8) {
                 System.out.print("\u001b[1mRecomendação:\u001b[m Muito bom");
             }
 
-            if(starsNumbers >= 5 && starsNumbers <= 7) {
+            if (starsNumbers >= 5 && starsNumbers <= 7) {
                 System.out.print("\u001b[1mRecomendação:\u001b[m Bom");
             }
 
-            if(starsNumbers <= 4) {
+            if (starsNumbers <= 4) {
                 System.out.print("\u001b[1mRecomendação:\u001b[m Ruim");
             }
             System.out.println("\n");
         }
-     }
-  }
+    }
+}
